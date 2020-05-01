@@ -11,7 +11,11 @@ double min = 1;
 double max = 0;
 double sum = 0;
 
-for(int i = 0; i < 5; i++){
+for(int i = 0; i < 5; i++){  
+    
+    // loop five times, i++ is a post incrment operator on i. Even if we replace it by pre increment opearator 
+    // loop will work.
+    // why ? See the explanation below
 
     double r = Math.random();
     System.out.println("Random Number : " + r);
@@ -35,3 +39,31 @@ System.out.println("Average : " +  sum/5);
 }
 
 }
+
+
+
+
+//This is because a for() loop is generally equivalent to a while() loop: [Not in corner cases like continue etc.]
+
+/*
+for (INITIALIZER; CONDITION; OPERATION) {
+    do_stuff();
+}
+
+Can be written:
+
+INITIALIZER;
+while(CONDITION) {
+    do_stuff();
+    OPERATION;
+}
+
+You can see that the OPERATION is always done at the bottom of the loop.
+In this form, it should be clear that i++ and ++i will have the same effect:
+they'll both increment i and ignore the result. 
+The new value of i is not tested until the next iteration begins, at the top of the loop.
+
+
+
+Ref: https://stackoverflow.com/questions/4706199/post-increment-and-pre-increment-within-a-for-loop-produce-same-output
+*/
